@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const contactSubmissions = []; // Temporary in-memory storage
+const Event = require('../models/event.ejs')
+const constact = require('../models/contact.ejs');
 
 router.get('/', (req, res) => {
     const eventDetails = [
@@ -242,7 +244,7 @@ router.get('/contact', (req, res) => {
     res.render('pages/contact');   
 });
 
-router.post('/contact', (req, res) => {
+router.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
     // Server-side validation
@@ -255,11 +257,8 @@ router.post('/contact', (req, res) => {
     if (!emailPattern.test(email)) {
         return res.status(400).send("Invalid email format.");
     }
-
-    // Store the submission in memory
-    contactSubmissions.push({ name, email, message });
-
-    console.log("New contact form submission:", { name, email, message }); // Optional: see it in terminal
+    await contactSubmissions.create({name,email,message});
+ 
 
     // Redirect to thank you page
     res.redirect('/thankyou');
