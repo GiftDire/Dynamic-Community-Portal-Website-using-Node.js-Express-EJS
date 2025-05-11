@@ -1,8 +1,27 @@
 <%- include('../partials/header') %>
-<h1>Upcoming Events</h1>
-<p>Check out what's happening soon!</p>
 
-
-<!-- Page-specific content goes here -->
+<div class="container mt-5">
+  <h2 class="text-center text-primary mb-4">All Upcoming Events</h2>
+  <div class="row">
+    <% eventDetails.forEach(event => { %>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="/events/<%= event.id %>" class="text-decoration-none text-dark">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= event.Image %>" class="card-img-top" alt="<%= event.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= event.title %></h5>
+              <p class="card-text"><%= event.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item"><strong>Time:</strong> <%= event.time %></li>
+              <li class="list-group-item"><strong>Location:</strong> <%= event.location %></li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>
