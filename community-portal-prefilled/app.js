@@ -6,7 +6,8 @@ const mongoose = require("mongoose")
 const pageRoutes = require("./routes/pageRoutes");
 
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
+const Host = process.env.Host;
 
 //this is our connection to mongoDB
 
@@ -29,5 +30,5 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", pageRoutes);
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http:${Host+port}`);
 });
