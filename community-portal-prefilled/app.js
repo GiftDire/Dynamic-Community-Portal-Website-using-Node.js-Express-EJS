@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose")
 const pageRoutes = require("./routes/pageRoutes");
+require('dotenv').config();
 
 const app = express();
 const port = process.env.port || 3000;
@@ -30,5 +31,5 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", pageRoutes);
 
 app.listen(port, () => {
-  console.log(`Server running on http:${Host+port}`);
+  console.log(`Server running on http:${Host}:${port}`);
 });
