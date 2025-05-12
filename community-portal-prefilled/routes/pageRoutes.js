@@ -3,52 +3,51 @@
 const express = require('express');
 const router = express.Router();
 const contactSubmissions = []; // Temporary in-memory storage
-// const Event = require('../models/event.ejs')
-// const constact = require('../models/contact.ejs');
+const Event = require('../models/event')
+const constact = require('../models/contact');
 
-router.get('/',async (req, res) => {
-    // const eventDetails = [
-    //     {
-    //         id: "art-workshop",
-    //         title: "Art Workshop",
-    //         description: "Join us for a fun and creative art workshop where you can learn new techniques and express your creativity.", 
-    //         Image: "/images/art-workshop.jpg",
-    //         date: "2023-10-15",
-    //         time: "10:00 AM - 2:00 PM",
-    //         location: "Community Center, Room 101"
-    //     },
-    //     {
-    //         id: "tech-talk",
-    //         title: "Tech Talk",
-    //         description: "Join us for an insightful tech talk on the latest trends in technology and innovation.",
-    //         Image: "/images/tech-talk.jpg",
-    //         date: "2023-10-20",
-    //         time: "2:00 PM - 4:00 PM",
-    //         location: "Community Center, Room 202"
-    //     },
-    //     {
-    //         id: "cooking-class",
-    //         title: "Cooking Class",
-    //         description: "Learn to cook delicious meals with our expert chef in this interactive cooking class.",
-    //         Image: "/images/cooking-class.jpg",
-    //         date: "2023-10-25",
-    //         time: "5:00 PM - 7:00 PM",
-    //         location: "Community Center, Kitchen"
-    //     },
-    //     {
-    //         id: "yoga-session",
-    //         title: "Yoga Session",
-    //         description: "Relax and rejuvenate with our yoga session led by a certified instructor.",
-    //         Image: "/images/yoga-session.jpg",
-    //         date: "2023-10-30",
-    //         time: "6:00 PM - 7:00 PM",
-    //         location: "Community Center, Room 303"
-    //     },
+router.get('/', (req, res) => {
+    const eventDetails = [
+        {
+            id: "art-workshop",
+            title: "Art Workshop",
+            description: "Join us for a fun and creative art workshop where you can learn new techniques and express your creativity.", 
+            Image: "/images/art-workshop.jpg",
+            date: "2023-10-15",
+            time: "10:00 AM - 2:00 PM",
+            location: "Community Center, Room 101"
+        },
+        {
+            id: "tech-talk",
+            title: "Tech Talk",
+            description: "Join us for an insightful tech talk on the latest trends in technology and innovation.",
+            Image: "/images/tech-talk.jpg",
+            date: "2023-10-20",
+            time: "2:00 PM - 4:00 PM",
+            location: "Community Center, Room 202"
+        },
+        {
+            id: "cooking-class",
+            title: "Cooking Class",
+            description: "Learn to cook delicious meals with our expert chef in this interactive cooking class.",
+            Image: "/images/cooking-class.jpg",
+            date: "2023-10-25",
+            time: "5:00 PM - 7:00 PM",
+            location: "Community Center, Kitchen"
+        },
+        {
+            id: "yoga-session",
+            title: "Yoga Session",
+            description: "Relax and rejuvenate with our yoga session led by a certified instructor.",
+            Image: "/images/yoga-session.jpg",
+            date: "2023-10-30",
+            time: "6:00 PM - 7:00 PM",
+            location: "Community Center, Room 303"
+        },
         
            
     
-    // ];
-    const eventDetails = await Event.find().sort({ date: 1 }).limit(4);
+    ];
     res.render('pages/home', { eventDetails });
 });
 
