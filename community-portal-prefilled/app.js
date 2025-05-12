@@ -7,19 +7,19 @@ const pageRoutes = require("./routes/pageRoutes");
 require('dotenv').config();
 
 const app = express();
-const port = process.env.port || 3000;
-const Host = process.env.Host;
+const port = process.env.PORT || 3000;
+const Host = process.env.HOST;
 
 //this is our connection to mongoDB
 
-mongoose.connect('',{
+mongoose.connect('mongodb://localhost:27017/community_portal',{
   useNewUrlParser: true,  
   useUnifiedTopology: true
 })
 .then(() =>
 console.log('Database connected')
 )
-.catch(err => console.log('Dabase not connected'));
+.catch(err => console.log('Database not connected'));
 
 
 app.use(express.static(path.join(__dirname, "public")));
