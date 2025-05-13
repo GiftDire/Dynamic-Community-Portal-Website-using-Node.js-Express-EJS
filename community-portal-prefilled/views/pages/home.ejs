@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 <div class="container mt-5 text-center">
-  <h1 class="display-4 text-primary">Welcome to Our Community Portal</h1>
+  <h1 class="display-4 text-primary">Welcome to Hillton Town Community Portal</h1>
   <p class="lead mt-3">Stay informed about upcoming events and get to know your community.</p>
 </div>
 
@@ -10,7 +10,7 @@
     <% eventDetails.forEach(event => { %>
       <div class="col-md-6 col-lg-4 mb-4">
         <a href="/events/<%= event.id %>" class="text-decoration-none text-dark">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm event-card">
             <img src="<%= event.Image %>" class="card-img-top" alt="<%= event.title %>">
             <div class="card-body">
               <h5 class="card-title"><%= event.title %></h5>
@@ -25,6 +25,12 @@
         </a>
       </div>
     <% }) %>
+    </div> <!-- End of .row -->
+
+<div class="text-center mt-4">
+  <a href="/events" class="btn btn-outline-primary">View All Events</a>
+</div>
+
   </div>
 </div>
 

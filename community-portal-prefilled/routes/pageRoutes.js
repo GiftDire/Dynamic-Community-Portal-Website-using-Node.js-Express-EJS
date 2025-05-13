@@ -212,8 +212,10 @@ router.get('/events/:id', (req, res) => {
 });
 
 router.get('/contact', (req, res) => {
-  res.render('pages/contact', { page: 'contact' });
+  const message = req.query.message || ''; // Extract message from query
+  res.render('pages/contact', { page: 'contact', message }); // Pass it to the view
 });
+
 
 router.post('/contact', (req, res) => {
   const { name, email, message } = req.body;

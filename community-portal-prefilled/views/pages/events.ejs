@@ -6,7 +6,7 @@
   <!-- Search Form -->
   <form class="row mb-4" method="GET" action="/events">
     <div class="col-md-10">
-      <input type="text" name="search" class="form-control" placeholder="Search events by title or keyword..." value="<%= search %>">
+      <input type="text" name="search" class="form-control search-bar" placeholder="Search events by title or keyword..." value="<%= search %>">
     </div>
     <div class="col-md-2">
       <button type="submit" class="btn btn-primary w-100">Search</button>
@@ -19,11 +19,11 @@
   <% } %>
 
   <!-- Event Cards -->
-  <div class="row">
+   <div class="row">
     <% eventDetails.forEach(event => { %>
       <div class="col-md-6 col-lg-4 mb-4">
         <a href="/events/<%= event.id %>" class="text-decoration-none text-dark">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm event-card">
             <img src="<%= event.Image %>" class="card-img-top" alt="<%= event.title %>">
             <div class="card-body">
               <h5 class="card-title"><%= event.title %></h5>

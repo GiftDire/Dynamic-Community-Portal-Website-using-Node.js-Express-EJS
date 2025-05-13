@@ -1,0 +1,61 @@
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: style the nav links for better contrast */
+.glass-navbar .nav-link {
+  color: rgb(0, 0, 0);
+  transition: color 0.2s ease;
+}
+
+.glass-navbar .nav-link:hover,
+.glass-navbar .nav-link.active {
+  color: #003cff; 
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 123, 255, 0.6); 
+}
+
+.member-role {
+  color: rgba(0, 123, 255, 0.85); 
+  font-weight: 600; 
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.search-bar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.6); 
+}
+
+.event-card {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .event-card:hover {
+    box-shadow: 0 8px 200px rgba(0, 123, 255, 0.6);
+    transform: translateY(-5px);
+  }

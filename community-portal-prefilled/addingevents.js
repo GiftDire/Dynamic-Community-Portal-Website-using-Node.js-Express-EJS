@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Event = require('./models/event.ejs');
 
-// Connect to your MongoDB
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/community_portal', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -40,12 +40,12 @@ const events = [
     time: "6:00 PM - 7:00 PM",
     location: "Community Center, Room 303"
   },
-  // Add more events here as needed...
+  
 ];
 
 async function seedDB() {
   try {
-    await Event.deleteMany({}); // Optional: clears existing events
+    await Event.deleteMany({}); 
     await Event.insertMany(events);
     console.log("Events seeded successfully!");
     mongoose.connection.close();
