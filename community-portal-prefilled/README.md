@@ -34,7 +34,7 @@ cd community-portal
 
 ```
 # Install Dependencies
-npm install
+npm i
 
 # Run the Development Server
-npm run dev
+nodemon app.js
