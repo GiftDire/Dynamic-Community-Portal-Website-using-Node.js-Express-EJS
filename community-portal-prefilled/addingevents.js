@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Event = require('./models/event.ejs');
+const Event = require('./models/event.js');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/community_portal', {

@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const contactSubmissions = []; // Temporary in-memory storage
 const Event = require('../models/event')
-const constact = require('../models/contact');
+const Contact = require('../models/contact');
 
 // Global event details array (accessible by all routes)
 const eventDetails = [
@@ -152,36 +152,15 @@ res.render('pages/home', { eventDetails: featuredEvents, page: 'home' });
 
 });
 
-router.get('/about', (req, res) => {
-  const teamMembers = [
-    {
-      name: "Daniel Lumb",
-      role: "Frontend Developer",
-      bio: "Passionate about clean UI and responsive design.",
-      image: "/images/daniel.jpg"
-    },
-    {
-      name: "Odirile Dire",
-      role: "Backend Developer",
-      bio: "Builds scalable backend systems and database logic.",
-      image: "/images/odirile-dire.jpg"
-    },
-    {
-      name: "Dehan Barnard",
-      role: "Data Manager",
-      bio: "Ensures data flows smoothly between components.",
-      image: "/images/dehan.jpg"
-    },
-    {
-      name: "Ruben Venter",
-      role: "Team Lead & Documentation",
-      bio: "Manages workflow, GitHub, and documentation.",
-      image: "/images/ruben.jpg"
-    }
-  ];
-
-  res.render('pages/about', { teamMembers, page: 'about' });
-});
+const Team = require('../models/team');
+router.get('/about', async (req, res) => {
+  try{
+    const teamMembers = await Team.find();
+    res.render('pages/about', {teamMembers, page: 'about'});
+  }catch (err) {
+    res.status(500).send("Team load is unsuccessfull.");
+  }
+})
 
 //Adding temporary search functionality
 router.get('/events', (req, res) => {
@@ -216,8 +195,7 @@ router.get('/contact', (req, res) => {
   res.render('pages/contact', { page: 'contact', message }); // Pass it to the view
 });
 
-
-router.post('/contact', (req, res) => {
+router.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
@@ -229,9 +207,13 @@ router.post('/contact', (req, res) => {
     return res.status(400).send("Invalid email format.");
   }
 
-  contactSubmissions.push({ name, email, message });
-
-  res.redirect('/thankyou');
+  try {
+    await Contact.create({ name, email, message }); // Saves to MongoDB
+    res.redirect('/thankyou');
+  } catch (error) {
+    console.error("Failed to save contact:", error);
+    res.status(500).send("Something went wrong. Please try again.");
+  }
 });
 
 // Route to view submissions — for testing only
