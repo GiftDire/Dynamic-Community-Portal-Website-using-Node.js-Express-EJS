@@ -43,16 +43,16 @@ const events = [
   
 ];
 
-async function seedDB() {
-  try {
-    await Event.deleteMany({}); 
-    await Event.insertMany(events);
-    console.log("Events seeded successfully!");
-    mongoose.connection.close();
-  } catch (err) {
-    console.error("Error seeding events:", err);
-    mongoose.connection.close();
-  }
-}
+// async function seedDB() {
+//   try {
+//     await Event.deleteMany({}); 
+//     await Event.insertMany(events);
+//     console.log("Events seeded successfully!");
+//     mongoose.connection.close();
+//   } catch (err) {
+//     console.error("Error seeding events:", err);
+//     mongoose.connection.close();
+//   }
+// }
 
-seedDB();
+// seedDB();

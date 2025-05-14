@@ -4,11 +4,12 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose")
 const pageRoutes = require("./routes/pageRoutes");
-require('dotenv').config();
+
+const port = 3000;
+const Host = "localhost";
+
 
 const app = express();
-const port = process.env.PORT || 3000;
-const Host = process.env.HOST;
 
 //this is our connection to mongoDB
 
