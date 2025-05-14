@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const contactSubmissions = []; // Temporary in-memory storage
 const Event = require('../models/event')
-const constact = require('../models/contact');
+const Contact = require('../models/contact');
 
 // Global event details array (accessible by all routes)
 const eventDetails = [
@@ -196,7 +196,7 @@ router.get('/contact', (req, res) => {
 });
 
 
-router.post('/contact', (req, res) => {
+/*router.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
@@ -211,6 +211,27 @@ router.post('/contact', (req, res) => {
   contactSubmissions.push({ name, email, message });
 
   res.redirect('/thankyou');
+});*/
+
+router.post('/contact', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).send("All fields are required.");
+  }
+
+  const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  if (!emailPattern.test(email)) {
+    return res.status(400).send("Invalid email format.");
+  }
+
+  try {
+    await Contact.create({ name, email, message }); // Saves to MongoDB
+    res.redirect('/thankyou');
+  } catch (error) {
+    console.error("Failed to save contact:", error);
+    res.status(500).send("Something went wrong. Please try again.");
+  }
 });
 
 // Route to view submissions — for testing only
