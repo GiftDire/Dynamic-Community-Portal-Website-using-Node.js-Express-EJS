@@ -240,7 +240,8 @@ router.get('/submissions', (req, res) => {
 });
 
 router.get('/thankyou', (req, res) => {
-  res.render('pages/thankyou');
+  res.render('pages/thankyou', { page: 'thankyou' });
 });
+
 
 module.exports = router;
