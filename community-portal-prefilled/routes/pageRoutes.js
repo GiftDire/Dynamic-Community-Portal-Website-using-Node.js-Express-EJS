@@ -152,36 +152,15 @@ res.render('pages/home', { eventDetails: featuredEvents, page: 'home' });
 
 });
 
-router.get('/about', (req, res) => {
-  const teamMembers = [
-    {
-      name: "Daniel Lumb",
-      role: "Frontend Developer",
-      bio: "Passionate about clean UI and responsive design.",
-      image: "/images/daniel.jpg"
-    },
-    {
-      name: "Odirile Dire",
-      role: "Backend Developer",
-      bio: "Builds scalable backend systems and database logic.",
-      image: "/images/odirile-dire.jpg"
-    },
-    {
-      name: "Dehan Barnard",
-      role: "Data Manager",
-      bio: "Ensures data flows smoothly between components.",
-      image: "/images/dehan.jpg"
-    },
-    {
-      name: "Ruben Venter",
-      role: "Team Lead & Documentation",
-      bio: "Manages workflow, GitHub, and documentation.",
-      image: "/images/ruben.jpg"
-    }
-  ];
-
-  res.render('pages/about', { teamMembers, page: 'about' });
-});
+const Team = require('../models/team');
+router.get('/about', async (req, res) => {
+  try{
+    const teamMembers = await Team.find();
+    res.render('pages/about', {teamMembers, page: 'about'});
+  }catch (err) {
+    res.status(500).send("Team load is unsuccessfull.");
+  }
+})
 
 //Adding temporary search functionality
 router.get('/events', (req, res) => {
