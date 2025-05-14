@@ -29,7 +29,7 @@ This is a dynamic community portal website built using Node.js, Express.js, and 
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-username/community-portal.git
+git clone https://github.com/GiftDire/Dynamic-Community-Portal-Website-using-Node.js-Express-EJS
 cd community-portal
 
 ```
