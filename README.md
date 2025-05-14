@@ -9,7 +9,7 @@ This is a dynamic community portal website built using Node.js, Express.js, and 
 - **Node.js** (v18+)
 - **Express.js** (v4+)
 - **EJS Templating Engine** (v3+)
-- **CSS** or **Bootstrap 5** (for styling)
+- **CSS** and **Bootstrap 5** (for styling)
 - **Nodemon** (for live development)
 - **Git & GitHub** (for version control and collaboration)
 
@@ -34,7 +34,7 @@ cd community-portal
 
 ```
 # Install Dependencies
-npm install
+npm i
 
 # Run the Development Server
-npm run dev
+nodemon app.js
