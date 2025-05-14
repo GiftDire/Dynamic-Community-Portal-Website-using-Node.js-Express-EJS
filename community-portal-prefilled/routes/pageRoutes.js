@@ -195,24 +195,6 @@ router.get('/contact', (req, res) => {
   res.render('pages/contact', { page: 'contact', message }); // Pass it to the view
 });
 
-
-/*router.post('/contact', (req, res) => {
-  const { name, email, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).send("All fields are required.");
-  }
-
-  const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  if (!emailPattern.test(email)) {
-    return res.status(400).send("Invalid email format.");
-  }
-
-  contactSubmissions.push({ name, email, message });
-
-  res.redirect('/thankyou');
-});*/
-
 router.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
