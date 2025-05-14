@@ -11,7 +11,8 @@ const Host = "localhost";
 
 const app = express();
 
-//this is our connection to mongoDB
+//this is our connection to mongodb if we want to connect to it
+
 
 mongoose.connect('mongodb://localhost:27017/community_portal',{
   useNewUrlParser: true,  
